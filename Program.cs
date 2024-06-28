@@ -7,13 +7,24 @@ namespace FileSync
     {
         static void Main(string[] args)
         {
-            string source = args[0] ?? "";
-            string destination = args[1] ?? "";
-            string pattern = args[2] ?? "*.*";
+            string source = args.Length > 0 ? args[0] : "";
+            string destination = args.Length > 1 ? args[1] : "";
+            string pattern = args.Length > 2 ? args[2] : "*.*";
             
             if (source.Length == 0 || destination.Length == 0)
             {
                 Console.WriteLine("Usage: filesync <source> <destination> <pattern>");
+                Environment.Exit(1);
+            }
+            if (!Path.Exists(source))
+            {
+                Console.Error.WriteLine("Source path does not exist");
+                Environment.Exit(1);
+            }
+            if (!Path.Exists(destination))
+            {
+                Console.Error.WriteLine("Destination path does not exist");
+                Environment.Exit(1);
             }
             FileSync sync = new FileSync(source, destination, pattern);
             EventWaitHandle waitHandle = new ManualResetEvent(false);

@@ -61,6 +61,7 @@ namespace FileSync
 
                 switch (e.ChangeType)
                 {
+                    case 0:
                     case WatcherChangeTypes.Created:
                     case WatcherChangeTypes.Changed:
                         if (e.ChangeType == 0)
