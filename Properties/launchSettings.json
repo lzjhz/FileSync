@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FileSync": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Laci\\KeePass\\ Z:\\backup\\apps\\KeePass\\ *.kdbx"
+    }
+  }
+}
